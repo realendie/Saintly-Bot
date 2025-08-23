@@ -42,7 +42,10 @@ client = Client(
     command_prefix="!", intents=intents
 )  # Command prefix, required to be there but not used
 
+# Commands
 
+
+# Ping/Pong Command
 @client.tree.command(name="ping", description="Pong!", guild=GUILD_ID)
 async def sayHello(interaction: discord.Interaction):
     await interaction.response.send_message("Pong!")
