@@ -21,6 +21,7 @@ class Client(commands.Bot):
     async def on_ready(self):
         print(f"Logged in as {self.user}")
 
+        # Attempting to synce commands to the Saintly City Roleplay Server for immediate availability
         print("Syncing commands to the guild...")
         try:
             synced = await self.tree.sync(guild=GUILD_ID)
