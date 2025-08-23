@@ -1,50 +1,38 @@
+print("Starting Saintly Bot...")
+
+print("Loading libraries...")
 import discord
-from discord.ext import commands
+from discord import app_commands
 import os
 import time
 
 # Accesing bot token from environment variable
-
+print("Fetching bot token...")
 token = os.getenv("SAINTLY_BOT_TOKEN")
 
-# Initailize Bot
-
+# Bot discord intents
+print("Setting Intents")
 intents = discord.Intents.default()
-intents.message_content = True
-
+intents.messages = True
+intents.guilds = True
+intents.members = True
 client = discord.Client(intents=intents)
-bot = commands.Bot(command_prefix="/", intents=intents)
+
+# Command tree
+print("Setting up command tree...")
+tree = app_commands.CommandTree(client)
+
+
+print("Connecting to Discord...")
 
 
 @client.event
 async def on_ready():
-
     currenttime = time.localtime()
     format_time = time.strftime("%H:%M:%S", currenttime)
 
-    print(f"Bot logged in as{client.user}")
+    print(f"Bot logged in as {client.user}")
     print(f"Bot online as of {format_time}!")
-
-
-# $hello Command
-
-
-@client.event
-async def on_message(message):
-    if message.author == client.user:
-        return
-
-    if message.content.startswith("$hello"):
-        await message.channel.send("Hello! Welcome to Saintly City Roleplay!")
-
-# Admin Commands
-
-#@bot.command(name="shutdown")
-#async def
-
-
-
-
 
 
 client.run(token)
