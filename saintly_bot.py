@@ -1,19 +1,30 @@
+print("Starting Saintly City Roleplay Bot...")
+print("Loading libraries...")
 import discord
 from discord.ext import commands
 from discord import app_commands
 import os
 
+# Discord Bot Token
+print("Fetching Bot Token...")
 token = os.getenv("SAINTLY_BOT_TOKEN")
+
+# Specific Guild ID required for command registration immediately after deployment
+print("Fetching Saintly City Discord Server ID...")
+GUILD_ID = discord.Object(id=1366991874019168256)  # Saintly City Discord Server ID
+
+print("Logging into Discord...")
 
 
 class Client(commands.Bot):
+    # Initializing bot and command prefixes
     async def on_ready(self):
-        print(f"We have logged in as {self.user}")
+        print(f"Logged in as {self.user}")
 
+        print("Syncing commands to the guild...")
         try:
-            guild = discord.Object(id=1366991874019168256)
-            synced = await self.tree.sync(guild=guild)
-            print(f"Synced {len(synced)} commands to the guild {guild}.")
+            synced = await self.tree.sync(guild=GUILD_ID)
+            print(f"Synced {len(synced)} commands to the guild.")
         except Exception as e:
             print(f"Failed to sync commands: {e}")
 
@@ -21,20 +32,19 @@ class Client(commands.Bot):
         if message.author == self.user:
             return
 
-        if message.content.startswith("!hello"):
-            await message.channel.send(f"Hello {message.author.mention}!")
 
-
+# Bot intents
+print("Loading bot intents...")
 intents = discord.Intents.default()
 intents.message_content = True
-client = Client(command_prefix="!", intents=intents)
+client = Client(
+    command_prefix="!", intents=intents
+)  # Command prefix, required to be there but not used
 
-GUILD_ID = discord.Object(id=1366991874019168256)  # Saintly City Discord Server ID
 
-
-@client.tree.command(name="hello", description="Say hello!", guild=GUILD_ID)
+@client.tree.command(name="ping", description="Pong!", guild=GUILD_ID)
 async def sayHello(interaction: discord.Interaction):
-    await interaction.response.send_message(f"Hello there! test")
+    await interaction.response.send_message("Pong!")
 
 
 client.run(token)
