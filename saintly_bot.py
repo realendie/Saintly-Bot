@@ -51,4 +51,20 @@ async def sayHello(interaction: discord.Interaction):
     await interaction.response.send_message("Pong!")
 
 
+# f8 Command
+@client.tree.command(
+    name="f8",
+    description="Sends the F8 link for Saintly City Roleplay.",
+    guild=GUILD_ID,
+)
+async def send_f8_link(interaction: discord.Interaction):
+    f8_link = "cfx.re/join/o7edmx"
+
+    async def printer(interaction: discord.Interaction):
+        f8_embed = discord.Embed(
+            title="f8 Command", description="```cfx.re/join/o7edmx```"
+        )
+        await interaction.response.send_message(embed=f8_embed)
+
+
 client.run(token)
