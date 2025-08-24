@@ -12,6 +12,8 @@ token = os.getenv("SAINTLY_BOT_TOKEN")
 # Specific Guild ID required for command registration immediately after deployment
 print("Fetching Saintly City Discord Server ID...")
 GUILD_ID = discord.Object(id=1366991874019168256)  # Saintly City Discord Server ID
+print("Fetching mod logs channel...")
+MOD_LOGS_ID = 1409267262812197015  # "mod-logs" Chanel ID
 
 print("Logging into Discord...")
 
@@ -61,6 +63,51 @@ async def f8(interaction: discord.Interaction):
     await interaction.response.send_message(
         "To join the server via the f8 menu press f8 then paste this command:\n```cfx.re/join/o7edmx```"
     )
+
+
+# Moderation Tools
+
+
+# Kick Command
+@client.tree.command(
+    name="kick",
+    description="Kicks a user from the server and logs it in #mod-logs",
+    guild=GUILD_ID,
+)
+@app_commands.describe(user="User to kick", reason="Reason for kicking")
+async def kick(
+    interaction: discord.Interaction,
+    user: discord.Member,
+    reason: str = "No reason provided",
+):
+    # Checking for kick permissions
+    if not interaction.user.guild_permissions.kick_members:
+        return await interaction.response.send_message(
+            "You do not have permission to run this command.", ephemeral=True
+        )
+
+    # Stops user from kicking higher or equal role members
+    if user.top_role >= interaction.user.top_role:
+        return await interaction.response.send_message(
+            "You cannot kick this user.", ephemeral=True
+        )
+    # Stops user from kicking themselves
+    if user == interaction.user:
+        return await interaction.response.send_message(
+            "You cannot kick yourself.", ephemeral=True
+        )
+
+    # Kicking Functionality
+    try:
+        await user.kick(reason=reason)
+        await interaction.response.send_message(
+            f"**{user}** has been kicked from the server."
+        )
+
+    except Exception as e:
+        return await interaction.response.send_message(
+            f"Failed to kick {user}. Error: {e}", ephemeral=True
+        )
 
 
 client.run(token)
