@@ -135,7 +135,7 @@ async def kick(
         )
         embed.add_field(name="Reason", value=reason, inline=False)
         embed.set_thumbnail(url=user.display_avatar.url)
-        embed.set_footer(text=f"Kicked on {formated_time} UTC")
+        embed.set_footer(text=f"Kicked on {formated_time}")
 
         await mod_logs.send(embed=embed)
     except Exception as e:
@@ -201,7 +201,7 @@ async def kick(
         )
         embed.add_field(name="Reason", value=reason, inline=False)
         embed.set_thumbnail(url=user.display_avatar.url)
-        embed.set_footer(text=f"Banned on {formated_time} UTC")
+        embed.set_footer(text=f"Banned on {formated_time}")
 
         await mod_logs.send(embed=embed)
     except Exception as e:
