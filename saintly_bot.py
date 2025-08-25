@@ -96,6 +96,7 @@ async def kick(
     user: discord.Member,
     reason: str = "No reason provided",
 ):
+    user_ID: int = user.id
     # Checking for kick permissions
     if not interaction.user.guild_permissions.kick_members:
         return await interaction.response.send_message(
@@ -117,7 +118,7 @@ async def kick(
     try:
         await user.kick(reason=reason)
         await interaction.response.send_message(
-            f"**{user}** has been kicked from the server."
+            f"**<@{user_ID}>** has been kicked from the server."
         )
 
         # Kick Logging
@@ -127,7 +128,7 @@ async def kick(
                 color=8496575,
                 title="Kick Log",
             )
-        embed.add_field(name="User", value=f"{user} (`{user.id}`)", inline=False)
+        embed.add_field(name="User", value=f"<@{user_ID}>", inline=False)
         embed.add_field(
             name="Kicked by",
             value=f"{interaction.user} (`{interaction.user.id}`)",
@@ -142,11 +143,11 @@ async def kick(
         # If we already had responded we must send message as follow up
         if interaction.response.is_done():
             await interaction.followup.send(
-                f"Failed to kick {user}. Error: {e}", ephemeral=True
+                f"Failed to kick **<@{user_ID}>**. Error: {e}", ephemeral=True
             )
         else:
             await interaction.response.send_message(
-                f"Failed to kick {user}. Error: {e}", ephemeral=True
+                f"Failed to kick **<@{user_ID}>**. Error: {e}", ephemeral=True
             )
 
 
@@ -162,6 +163,7 @@ async def kick(
     user: discord.Member,
     reason: str = "No reason provided",
 ):
+    user_ID: int = user.id
     # Checking for ban permissions
     if not interaction.user.guild_permissions.ban_members:
         return await interaction.response.send_message(
@@ -183,7 +185,7 @@ async def kick(
     try:
         await user.ban(reason=reason)
         await interaction.response.send_message(
-            f"**{user}** has been banned from the server."
+            f"****<@{user_ID}>**** has been banned from the server."
         )
 
         # Ban Logging
@@ -193,7 +195,7 @@ async def kick(
                 color=8496575,
                 title="Ban Log",
             )
-        embed.add_field(name="User", value=f"{user} (`{user.id}`)", inline=False)
+        embed.add_field(name="User", value=f"**<@{user_ID}>** (`{user.id}`)", inline=False)
         embed.add_field(
             name="Banned by",
             value=f"{interaction.user} (`{interaction.user.id}`)",
@@ -208,11 +210,11 @@ async def kick(
         # If we already had responded we must send message as follow up
         if interaction.response.is_done():
             await interaction.followup.send(
-                f"Failed to Ban {user}. Error: {e}", ephemeral=True
+                f"Failed to Ban **<@{user_ID}>**. Error: {e}", ephemeral=True
             )
         else:
             await interaction.response.send_message(
-                f"Failed to Ban {user}. Error: {e}", ephemeral=True
+                f"Failed to Ban **<@{user_ID}>**. Error: {e}", ephemeral=True
             )
 
 
