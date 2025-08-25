@@ -104,6 +104,9 @@ async def kick(
             f"**{user}** has been kicked from the server."
         )
 
+        # Kick Logging
+        if 
+
     except Exception as e:
         return await interaction.response.send_message(
             f"Failed to kick {user}. Error: {e}", ephemeral=True
