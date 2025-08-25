@@ -8,7 +8,7 @@ import time
 
 # Current time
 current_time = time.gmtime()
-formated_time = time.strftime(f"%d/%m/%y at %H:%M:%S")
+formated_time = time.strftime(f"%m/%d/%y at %H:%M:%S UTC")
 
 # Discord Bot Token
 print("Fetching Bot Token...")
