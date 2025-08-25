@@ -70,6 +70,13 @@ async def f8(interaction: discord.Interaction):
         "To join the server via the f8 menu press f8 then paste this command:\n```cfx.re/join/o7edmx```"
     )
 
+# Current Time Command
+@client.tree.command(name="time", description="Gives the user the current time and date in UTC", guild=GUILD_ID)
+async def timeCommand(interaction: discord.Interaction):
+    await interaction.response.send_message(
+        f"It is currently **{formated_time}**"
+    )
+
 
 # Moderation Tools
 
