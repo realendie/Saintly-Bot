@@ -4,6 +4,11 @@ import discord
 from discord.ext import commands
 from discord import app_commands
 import os
+import time
+
+# Current time
+current_time = time.gmtime()
+formated_time = time.strftime(f"%d/%m/%y at %H:%M:%S")
 
 # Discord Bot Token
 print("Fetching Bot Token...")
@@ -40,6 +45,7 @@ class Client(commands.Bot):
 print("Loading bot intents...")
 intents = discord.Intents.default()
 intents.message_content = True
+intents.members = True
 client = Client(
     command_prefix="!", intents=intents
 )  # Command prefix, required to be there but not used
@@ -105,12 +111,29 @@ async def kick(
         )
 
         # Kick Logging
-        if 
-
-    except Exception as e:
-        return await interaction.response.send_message(
-            f"Failed to kick {user}. Error: {e}", ephemeral=True
+        mod_logs = interaction.guild.get_channel(MOD_LOGS_ID)
+        if mod_logs:
+            embed = discord.Embed(
+            color=8496575,
+            title="Kick Log",
         )
+        embed.add_field(name="User", value=f"{user} (`{user.id}`)", inline=False)
+        embed.add_field(name="Kicked by", value=f"{interaction.user} (`{interaction.user.id}`)", inline=False)
+        embed.add_field(name="Reason", value=reason, inline=False)
+        embed.set_thumbnail(url=user.display_avatar.url)
+        embed.set_footer(text=f"Kicked on {formated_time} UTC")
+
+        await mod_logs.send(embed=embed)
+    except Exception as e:
+        # If we already had responded we must send message as follow up
+        if interaction.response.is_done():
+            await interaction.followup.send(
+                f"Failed to kick {user}. Error: {e}", ephemeral=True
+            )
+        else:
+            await interaction.response.send_message(
+                f"Failed to kick {user}. Error: {e}", ephemeral=True
+            )
 
 
 client.run(token)
