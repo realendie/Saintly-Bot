@@ -12,7 +12,7 @@ formated_time = time.strftime(f"%m/%d/%y at %H:%M:%S")
 
 # Discord Bot Token
 print("Fetching Bot Token...")
-token = os.getenv("SAINTLY_BOT_TOKEN")
+token = str(os.getenv("SAINTLY_BOT_TOKEN"))
 
 # Specific Guild ID required for command registration immediately after deployment
 print("Fetching Saintly City Discord Server ID...")
@@ -195,7 +195,9 @@ async def kick(
                 color=8496575,
                 title="Ban Log",
             )
-        embed.add_field(name="User", value=f"**<@{user_ID}>** (`{user.id}`)", inline=False)
+        embed.add_field(
+            name="User", value=f"**<@{user_ID}>** (`{user.id}`)", inline=False
+        )
         embed.add_field(
             name="Banned by",
             value=f"{interaction.user} (`{interaction.user.id}`)",
