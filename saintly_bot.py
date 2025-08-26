@@ -17,8 +17,9 @@ token = str(os.getenv("SAINTLY_BOT_TOKEN"))
 # Specific Guild ID required for command registration immediately after deployment
 print("Fetching Saintly City Discord Server ID...")
 GUILD_ID = discord.Object(id=1366991874019168256)  # Saintly City Discord Server ID
-print("Fetching mod logs channel...")
+print("Fetching required channels...")
 MOD_LOGS_ID = 1409267262812197015  # "mod-logs" Chanel ID
+WELCOMES_CHANNEL_ID = 1389748486966083695  # "welcome-to-minnesota" Channel ID
 
 print("Logging into Discord...")
 
@@ -218,6 +219,28 @@ async def kick(
             await interaction.response.send_message(
                 f"Failed to Ban **<@{user_ID}>**. Error: {e}", ephemeral=True
             )
+
+
+# Welcome Messages
+
+
+@client.event
+async def on_member_join(member: discord.Member):
+    welcomes_channel = member.guild.get_channel(WELCOMES_CHANNEL_ID)
+    if welcomes_channel:
+        embed = discord.Embed(
+            color=8496575,
+            title="Welcome to Saintly City Roleplay!",
+            description=f"Hello {member.mention} and welcome to Saintly City Roleplay! Make sure to read the rules in <#1367291515977596948>. Enjoy your stay!",
+        )
+        embed.set_thumbnail(
+            url="https://cdn.discordapp.com/attachments/1385571219276955678/1408971677643182080/SCRP-Logo.png?ex=68abaea1&is=68aa5d21&hm=2526ac37367c6e93393728b38cf6cc7dd782c0f0b34a23d61807f1c94eecd5d8&"
+        )
+        embed.set_image(
+            url="https://media.discordapp.net/attachments/1389789395435130952/1409430976777552014/image.png?ex=68ae0322&is=68acb1a2&hm=f6b41d0bef011b80fe9528f69cc4a482519e5b889d0074bd354cb722d2688b9b&=&format=webp&quality=lossless&width=1233&height=676"
+        )
+
+        await welcomes_channel.send(embed=embed)
 
 
 client.run(token)
