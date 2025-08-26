@@ -243,6 +243,65 @@ async def on_member_join(member: discord.Member):
         await welcomes_channel.send(embed=embed)
 
 
+# Reaction Roles
+
+REACTION_ROLES = {
+    "✅": 1381509714835148840,  # Emoji: Role ID
+}
+
+MESSAGE_ID = 1409426311717326849  # The message ID where reactions should count
+
+
+@client.event
+async def on_raw_reaction_add(payload: discord.RawReactionActionEvent):
+    if payload.message_id != MESSAGE_ID:
+        return
+
+    guild = client.get_guild(payload.guild_id)
+    if guild is None:
+        return
+
+    role_id = REACTION_ROLES.get(str(payload.emoji))
+    if role_id is None:
+        return
+
+    role = guild.get_role(role_id)
+    if role is None:
+        return
+
+    member = guild.get_member(payload.user_id)
+    if member is None or member.bot:
+        return
+
+    await member.add_roles(role, reason="Reaction role added")
+    print(f"✅ Added {role.name} to {member.display_name}")
+
+
+@client.event
+async def on_raw_reaction_remove(payload: discord.RawReactionActionEvent):
+    if payload.message_id != MESSAGE_ID:
+        return
+
+    guild = client.get_guild(payload.guild_id)
+    if guild is None:
+        return
+
+    role_id = REACTION_ROLES.get(str(payload.emoji))
+    if role_id is None:
+        return
+
+    role = guild.get_role(role_id)
+    if role is None:
+        return
+
+    member = guild.get_member(payload.user_id)
+    if member is None:
+        return
+
+    await member.remove_roles(role, reason="Reaction role removed")
+    print(f"❌ Removed {role.name} from {member.display_name}")
+
+
 client.run(token)
 
 # LICENSE
