@@ -231,7 +231,7 @@ async def on_member_join(member: discord.Member):
         embed = discord.Embed(
             color=8496575,
             title="Welcome to Saintly City Roleplay!",
-            description=f"Hello {member.mention} and welcome to Saintly City Roleplay! Make sure to read the rules in <#1367291515977596948>. Enjoy your stay!",
+            description=f"Hello {member.mention} and welcome to Saintly City Roleplay! Make sure to read the rules in <#1367291515977596948> and head to <#1389789262504788019> to get verified. Enjoy your stay!",
         )
         embed.set_thumbnail(
             url="https://cdn.discordapp.com/attachments/1385571219276955678/1408971677643182080/SCRP-Logo.png?ex=68abaea1&is=68aa5d21&hm=2526ac37367c6e93393728b38cf6cc7dd782c0f0b34a23d61807f1c94eecd5d8&"
