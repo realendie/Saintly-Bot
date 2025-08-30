@@ -241,6 +241,10 @@ async def on_member_join(member: discord.Member):
         )
 
         await welcomes_channel.send(embed=embed)
+    # Pending Residency Role
+    role = member.guild.get_role(1389033655728341032)  # Pending Residency Role ID
+    if role:
+        await member.add_roles(role, reason="Automatic Pending Residency Role")
 
 
 # Reaction Roles
