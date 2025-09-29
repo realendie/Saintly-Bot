@@ -60,18 +60,6 @@ async def sayHello(interaction: discord.Interaction):
     await interaction.response.send_message("Pong!")
 
 
-# f8 Command
-@client.tree.command(
-    name="f8",
-    description="Gives the user the server's f8 join command.",
-    guild=GUILD_ID,
-)
-async def f8(interaction: discord.Interaction):
-    await interaction.response.send_message(
-        "To join the server via the f8 menu press f8 then paste this command:\n```cfx.re/join/o7edmx```"
-    )
-
-
 # Current Time Command
 @client.tree.command(
     name="time",
