@@ -1,4 +1,4 @@
-print("Starting Saintly City Roleplay Bot...")
+print("Starting Saintly Bot...")
 print("Loading libraries...")
 import discord
 from discord.ext import commands
@@ -15,11 +15,11 @@ print("Fetching Bot Token...")
 token = str(os.getenv("SAINTLY_BOT_TOKEN"))
 
 # Specific Guild ID required for command registration immediately after deployment
-print("Fetching Saintly City Discord Server ID...")
-GUILD_ID = discord.Object(id=1366991874019168256)  # Saintly City Discord Server ID
+print("Fetching Discord Server ID...")
+GUILD_ID = discord.Object(id=1366991874019168256)  # Discord Server ID
 print("Fetching required channels...")
-MOD_LOGS_ID = 1409267262812197015  # "mod-logs" Chanel ID
-WELCOMES_CHANNEL_ID = 1389748486966083695  # "welcome-to-minnesota" Channel ID
+MOD_LOGS_ID = 1409267262812197015  # "mod-logs" Channel ID
+WELCOMES_CHANNEL_ID = 1389748486966083695  # Welcomes Channel ID
 
 print("Logging into Discord...")
 
@@ -29,7 +29,7 @@ class Client(commands.Bot):
     async def on_ready(self):
         print(f"Logged in as {self.user}")
 
-        # Attempting to synce commands to the Saintly City Roleplay Server for immediate availability
+        # Attempting to sync commands to the Your Discord Server for immediate availability
         print("Syncing commands to the guild...")
         try:
             synced = await self.tree.sync(guild=GUILD_ID)
