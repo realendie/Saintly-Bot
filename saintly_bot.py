@@ -16,10 +16,10 @@ token = str(os.getenv("SAINTLY_BOT_TOKEN"))
 
 # Specific Guild ID required for command registration immediately after deployment
 print("Fetching Discord Server ID...")
-GUILD_ID = discord.Object(id=1366991874019168256)  # Discord Server ID
+GUILD_ID = discord.Object(id=os.getenv("SERVER_ID"))  # Discord Server ID
 print("Fetching required channels...")
-MOD_LOGS_ID = 1409267262812197015  # "mod-logs" Channel ID
-WELCOMES_CHANNEL_ID = 1389748486966083695  # Welcomes Channel ID
+MOD_LOGS_ID = os.getenv("MOD_LOG_CHANNEL_ID")  # "mod-logs" Channel ID
+WELCOMES_CHANNEL_ID = os.getenv("WELCOME_CHANNEL_ID")  # Welcomes Channel ID
 
 print("Logging into Discord...")
 
@@ -108,7 +108,7 @@ async def kick(
         await user.kick(reason=reason)
         await interaction.response.send_message(
             f"**<@{user_ID}>** has been kicked from the server."
-        )
+            )
 
         # Kick Logging
         mod_logs = interaction.guild.get_channel(MOD_LOGS_ID)

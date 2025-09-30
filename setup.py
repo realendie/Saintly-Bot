@@ -9,8 +9,8 @@ os.environ["SAINTLY_BOT_TOKEN"] = input("Enter your bot token: ")
 print("Saintly Bot Token:", os.environ["SAINTLY_BOT_TOKEN"])
 
 # Guild ID
-os.environ["GUILD_ID"] = input("Enter your guild ID: ")
-print("Guild ID:", os.environ["GUILD_ID"])
+os.environ["SERVER_ID"] = input("Enter your guild ID: ")
+print("Guild ID:", os.environ["SERVER_ID"])
 
 # Welcome Channel ID
 os.environ["WELCOME_CHANNEL_ID"] = input("Enter your welcome channel ID: ")
