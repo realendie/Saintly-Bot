@@ -15,9 +15,13 @@ print("Guild ID:", os.environ["GUILD_ID"])
 # Welcome Channel ID
 os.environ["WELCOME_CHANNEL_ID"] = input("Enter your welcome channel ID: ")
 print("Welcome Channel ID:", os.environ["WELCOME_CHANNEL_ID"])
+
 os.environ["PENDING_ROLE_ID"] = input("Enter your pending role ID: ")
 print("Pending Role ID:", os.environ["PENDING_ROLE_ID"])
+
 
 # Mod Log Channel ID
 os.environ["MOD_LOG_CHANNEL_ID"] = input("Enter your mod log channel ID: ")
 print("Mod Log Channel ID:", os.environ["MOD_LOG_CHANNEL_ID"])
+
+print('Setup complete!')
