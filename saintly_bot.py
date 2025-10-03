@@ -16,10 +16,10 @@ token = str(os.getenv("SAINTLY_BOT_TOKEN"))
 
 # Specific Guild ID required for command registration immediately after deployment
 print("Fetching Discord Server ID...")
-GUILD_ID = discord.Object(id=1366991874019168256)  # Discord Server ID
+GUILD_ID = discord.Object(id=1408875149754765454)  # Discord Server ID
 print("Fetching required channels...")
-MOD_LOGS_ID = 1409267262812197015  # "mod-logs" Channel ID
-WELCOMES_CHANNEL_ID = 1389748486966083695  # Welcomes Channel ID
+MOD_LOGS_ID = 1422732124750086160  # "mod-logs" Channel ID
+WELCOMES_CHANNEL_ID = 1422732019019944068  # Welcomes Channel ID
 
 print("Logging into Discord...")
 
@@ -230,7 +230,7 @@ async def on_member_join(member: discord.Member):
 
         await welcomes_channel.send(embed=embed)
     # Pending Residency Role
-    role = member.guild.get_role(1389033655728341032)  # Pending Residency Role ID
+    role = member.guild.get_role(1422732060782755941)  # Pending Residency Role ID
     if role:
         await member.add_roles(role, reason="Automatic Pending Residency Role")
 
