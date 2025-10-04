@@ -34,13 +34,13 @@ To host Saintly Bot locally via your terminal follow these steps:
 1. Clone the repository: `git clone https://github.com/realendie/Saintly-Bot.git`
 2. CD into the directory: `cd Saintly-Bot/`
 3. Install requirements:
-    3.1. Create virtual environment: `python3 -m venv .venv`
-    3.2. Activate virtual environment: `source .venv/bin/activate`
-    3.3. Upgrade PIP: `pip install --upgrade pip`
-    3.4. Install Python packages: `pip install -r ./requirements.txt`
-4. Fill in your servers information in `saintly_bot.py`
-5. Set your bot token to an evironment variable named `SAINTLY_BOT_TOKEN` (Method depends on your OS)
-6. Run the bot: `python3 saintly_bot.py`
+4. Create virtual environment: `python3 -m venv .venv`
+5. Activate virtual environment: `source .venv/bin/activate`
+6. Upgrade PIP: `pip install --upgrade pip`
+7. Install Python packages: `pip install -r ./requirements.txt`
+8. Fill in your servers information in `saintly_bot.py`
+9. Set your bot token to an evironment variable named `SAINTLY_BOT_TOKEN` (Method depends on your OS)
+10. Run the bot: `python3 saintly_bot.py`
 
 ### Docker Hosting
 
