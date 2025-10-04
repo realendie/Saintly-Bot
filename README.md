@@ -13,6 +13,12 @@ Saintly Bot has some basic modules that every sever would need. Some include:
 
 There are two simple ways to host Saintly Bot for your self.
 
+## Requirements
+
+- Python >= 3.13
+- Requirements listed in `requirments.txt`
+- A Discord account
+
 ### Discord Developer Setup
 
 Follow the steps listed here to setup your discord bot: [Create a Discord Bot and Add Permissions](https://scribehow.com/viewer/Create_a_Discord_Bot_and_Add_Permissions__Rzi4bF2KQeuBAyT2ZDtlbA?add_to_team_with_invite=True&sharer_domain=gmail.com&sharer_id=3239cd2c-7eb1-472f-a240-3cfebebe77bf)
