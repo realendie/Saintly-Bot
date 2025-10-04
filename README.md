@@ -1,4 +1,8 @@
+<img src=Saintly_Bot_Banner.png>
+
 # Saintly Bot
+<img src="https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue" />
+<img src="https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white">
 
 A self hosted, code centered, generic discord bot for your server. Saintly Bot is made as a solution to expensive and propritary discord bots that make you pay for basic features.
 
