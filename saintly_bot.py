@@ -54,20 +54,6 @@ client = Client(
 
 # Commands
 
-
-# Setup Commands
-@client.tree.command(
-    name="set_mod_logs_channel",
-    description="Use this command to set the channel in which you would like your mod logs to be sent.",
-    guild=GUILD_ID,
-)
-async def modLogsChannel(interaction: discord.Interaction):
-    id = str(interaction.channel_id)
-    await interaction.response.send_message(
-        "Mod Logs Channel set to this channel.", ephemeral=True
-    )
-
-
 # Ping/Pong Command
 @client.tree.command(name="ping", description="Pong!", guild=GUILD_ID)
 async def sayHello(interaction: discord.Interaction):
