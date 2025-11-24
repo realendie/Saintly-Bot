@@ -20,7 +20,7 @@ There are two simple ways to host Saintly Bot for your self.
 ## Requirements
 
 - Python >= 3.13
-- Requirements listed in `requirments.txt`
+- Requirements listed in `requirements.txt`
 - A Discord account
 
 ### Discord Developer Setup
