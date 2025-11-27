@@ -6,6 +6,10 @@ from discord import app_commands
 import os
 import time
 
+# FastAPI Imports
+from typing import Union
+from fastapi import FastAPI
+
 # Current time
 current_time = time.gmtime()
 formated_time = time.strftime(f"%m/%d/%y at %H:%M:%S")
@@ -29,6 +33,11 @@ class Client(commands.Bot):
     # Initializing bot and command prefixes
     async def on_ready(self):
         print(f"Logged in as {self.user}")
+
+        print("Starting FastAPI Api")
+
+        app = saintly_bot
+        LOGS_PATH = Path("logs.json")
 
         # Attempting to sync commands to the Your Discord Server for immediate availability
         print("Syncing commands to the guild...")
